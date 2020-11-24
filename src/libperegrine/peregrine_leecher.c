@@ -213,3 +213,12 @@ peregrine_leecher_close(peregrine_handle_t handle)
   local_leecher->cmd = CMD_FINISH;
   net_leecher_close(local_leecher);
 }
+
+void
+peregrine_leecher_print_stats(peregrine_handle_t handle)
+{
+  struct peer *leecher = (struct peer *)handle;
+  printf("Bytes send: %d \n", leecher->tx_bytes);
+  printf("%lld.%.9ld \n", (long long)leecher->ts_start_time.tv_sec, leecher->ts_start_time.tv_nsec);
+  printf("%lld.%.9ld \n", (long long)leecher->ts_end_time.tv_sec, leecher->ts_end_time.tv_nsec);
+}
